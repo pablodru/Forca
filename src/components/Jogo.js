@@ -9,10 +9,7 @@ import { useState } from 'react';
 
 export default function Jogo(props){
 
-    const {setStateGame, chosenWord,setChosenWord, wordArray, setWordArray} = props;
-    setWordArray(wordArray.sort(()=>Math.random() - 0.5));
-
-    console.log(chosenWord);
+    const {playGame, setStateGame, chosenWord,setChosenWord, clickedLeter, misteryArray, selectedLeters} = props;
 
 
     const numberImages=[0,1,2,3,4,5,6];
@@ -22,13 +19,11 @@ export default function Jogo(props){
         <div className="play">
             <img src={forca0} />
             <div>
-                <button className="choose-word" onClick={() => {
-                    setStateGame(true);
-                    setChosenWord(wordArray[0]);}}>
+                <button className="choose-word" onClick={playGame} disabled={chosenWord!=='' ? true : false} >
                     <p>Escolher Palavra</p>
                 </button>
                 <div className="playing-word"> {/*Outras classes: playing-word wrong-word e right-word */}
-                    <p>{chosenWord}</p>
+                    {misteryArray.map( (mistery, i) => <p key={i}>{mistery}</p> )}
                 </div>
             </div>
         </div>
