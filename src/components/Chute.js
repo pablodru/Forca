@@ -4,7 +4,7 @@ export default function Chute(props) {
 
     function guessWord(){
         setStateGame(false);
-        if(guess===chosenWord){
+        if(guess.toLowerCase()===chosenWord){
             setWinCounter(misteryArray.length);
             setGuessRight(true);
             setGuess('');
