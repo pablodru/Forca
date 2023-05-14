@@ -34,6 +34,7 @@ export default function App(){
         setStateGame(true);
         setSelectedLeters([]);
         setCounter(0);
+        setGuessRight(false);
 
         const misteryWord = newWord.replace(/[a-zA-Z]/g,'_');
         setMisteryArray(misteryWord.split(''));

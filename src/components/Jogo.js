@@ -16,8 +16,6 @@ export default function Jogo(props){
     let gameWin = false;
     let counterWin = 0;
 
-    console.log(stateGame)
-
     if(counter===0) image = forca0;
     if(counter===1) image = forca1;
     if(counter===2) image = forca2;
@@ -39,15 +37,6 @@ export default function Jogo(props){
             }
         }
     }
-
-    function canPlay(){
-        if(!stateGame){
-            playGame();
-        }
-    }
-
-    console.log('winCounter', winCounter);
-    console.log('mistery', misteryArray.length);
 
     return (
         <div className="play">
