@@ -9,21 +9,57 @@ import { useState } from 'react';
 
 export default function Jogo(props){
 
-    const {playGame, setStateGame, chosenWord,setChosenWord, clickedLeter, misteryArray, selectedLeters} = props;
+    const {playGame, stateGame, setStateGame, chosenWord, misteryArray, counter, winCounter} = props;
 
+    let image;
+    let answer = "playing-word";
+    let gameWin = false;
+    let counterWin = 0;
 
-    const numberImages=[0,1,2,3,4,5,6];
-    const images = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
+    console.log(stateGame)
+
+    if(counter===0) image = forca0;
+    if(counter===1) image = forca1;
+    if(counter===2) image = forca2;
+    if(counter===3) image = forca3;
+    if(counter===4) image = forca4;
+    if(counter===5) image = forca5;
+    if(counter===6) {
+        image = forca6;
+        answer = 'wrong-word';
+        setStateGame(false);
+    }
+
+    for(let i = 0; i<misteryArray.length; i++){
+        if(misteryArray[i]!=='_'){
+            counterWin++;
+            if(counterWin === misteryArray.length){
+                setStateGame(false);
+                gameWin=true;
+            }
+        }
+    }
+
+    function canPlay(){
+        if(!stateGame){
+            playGame();
+        }
+    }
+
+    console.log('winCounter', winCounter);
+    console.log('mistery', misteryArray.length);
 
     return (
         <div className="play">
-            <img src={forca0} />
+            <img src={image} data-test='game-image' />
             <div>
-                <button className="choose-word" onClick={playGame} disabled={chosenWord!=='' ? true : false} >
+                <button className="choose-word" onClick={canPlay} disabled={stateGame && counter===6} data-test='choose-word'>
                     <p>Escolher Palavra</p>
                 </button>
-                <div className="playing-word"> {/*Outras classes: playing-word wrong-word e right-word */}
-                    {misteryArray.map( (mistery, i) => <p key={i}>{mistery}</p> )}
+                <div className={answer}> {/*Outras classes: playing-word wrong-word e right-word */}
+                    <span className={(counter!==6 && counterWin!==misteryArray.length) ? '' : 'hidden'} data-test='word'>{misteryArray.map( (mistery, i) => <p key={i}>{mistery}</p> )}</span>
+                    <span className={counter!==6 ? 'hidden' : ''} data-test='word'><p>{chosenWord}</p></span>
+                    <span className={(counterWin === misteryArray.length && counterWin!==0 && gameWin) ? 'right-word' : 'hidden'} data-test='word'><p>{chosenWord}</p></span>
                 </div>
             </div>
         </div>

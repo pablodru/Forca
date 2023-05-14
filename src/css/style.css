@@ -4,6 +4,10 @@
     font-style:normal;
 }
 
+.hidden{
+    display:none;
+}
+
 .app {
   width: 100%;
   height: auto;
@@ -126,4 +130,8 @@
     font-size: 18px;
     line-height: 19px;
     color:#798A9F;
+}
+
+span{
+    display:flex;
 }

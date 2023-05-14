@@ -2,15 +2,16 @@ import { useState } from "react";
 
 export default function Letras(props) {
   const {
-    chosenWord,
-    clickedLeter,
-    setClickedLeter,
     selectedLeters,
     setSelectedLeters,
     stateGame,
     arrayWord,
     setMisteryArray,
     misteryArray,
+    counter,
+    setCounter,
+    winCounter,
+    setWinCounter,
   } = props;
 
   const arrayLeters = [
@@ -42,29 +43,32 @@ export default function Letras(props) {
     "Z",
   ];
 
+  let counterLeters=0;
+
   function verifyLeter(leter) {
-    console.log(leter);
     let newLeter = leter;
-    setClickedLeter(leter);
-    console.log(arrayWord, 3);
 
     const newArrayLeters = [...selectedLeters, newLeter];
     let newMistery = [...misteryArray];
 
     setSelectedLeters(newArrayLeters);
-    
+  
 
     arrayWord.forEach((l, i) => {
       if (l.toUpperCase() === leter) {
         newMistery[i] = l;
-        console.log(l.toUpperCase(), leter);
+        setWinCounter(winCounter+1);
         setMisteryArray(newMistery);
+
+        console.log(winCounter, 'win');
         
       } else {
-        console.log('não foi', l)
+        counterLeters++;
+        if(counterLeters === arrayWord.length){
+          setCounter(counter+1)
+        }
       }
     });
-    
   }
 
   return (
@@ -75,6 +79,7 @@ export default function Letras(props) {
           className="leter"
           disabled={selectedLeters.includes(leter) || !stateGame}
           onClick={() => verifyLeter(leter)}
+          data-test='letter'
         >
           {leter}
         </button>

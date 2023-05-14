@@ -9,16 +9,17 @@ export default function App(){
     const [stateGame, setStateGame] = useState(false);
     const [wordsArray, setWordsArray] = useState(palavras);
     const [chosenWord, setChosenWord] = useState('');
-    let [clickedLeter, setClickedLeter] = useState('');
     let [misteryArray, setMisteryArray] = useState([]);
     let [arrayWord, setArrayWord] = useState([]);
     const [selectedLeters, setSelectedLeters] = useState([]);
+    const [counter, setCounter] = useState(0);
+    const [winCounter, setWinCounter] = useState(0);
     
 
     return (
         <div className="app">
-            <Jogo selectedLeters={selectedLeters} playGame={playGame} misteryArray={misteryArray} chosenWord={chosenWord} setChosenWord={setChosenWord} clickedLeter={clickedLeter} />
-            <Letras stateGame={stateGame} selectedLeters={selectedLeters} setSelectedLeters={setSelectedLeters} misteryArray={misteryArray} setMisteryArray={setMisteryArray} arrayWord={arrayWord} setArrayWord={setArrayWord} chosenWord={chosenWord} clickedLeter={clickedLeter} setClickedLeter={setClickedLeter} />
+            <Jogo stateGame={stateGame} setStateGame={setStateGame} winCounter={winCounter} counter={counter} playGame={playGame} misteryArray={misteryArray} chosenWord={chosenWord} />
+            <Letras setWinCounter={setWinCounter} winCounter={winCounter} counter={counter} setCounter={setCounter} stateGame={stateGame} selectedLeters={selectedLeters} setSelectedLeters={setSelectedLeters} misteryArray={misteryArray} setMisteryArray={setMisteryArray} arrayWord={arrayWord} setArrayWord={setArrayWord}/>
         </div>
     )
 
@@ -27,10 +28,15 @@ export default function App(){
         const newWord = wordsArray[0];
         setChosenWord(newWord);
         setStateGame(true);
+        setSelectedLeters([]);
 
         const misteryWord = newWord.replace(/[a-zA-Z]/g,'_');
         setMisteryArray(misteryWord.split(''));
         setArrayWord(newWord.split(''));
         console.log(misteryArray, arrayWord, newWord);
+
+        if(counter===6){
+            setCounter(0);
+        }
     }
 }
