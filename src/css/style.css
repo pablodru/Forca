@@ -135,3 +135,56 @@
 span{
     display:flex;
 }
+
+.guess{
+    width:52%;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.guess div{
+    width:18%;
+    height:auto;
+
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.guess p{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color:#000000;
+    text-align: center;
+}
+
+.guess input {
+    width:60%;
+    height:100%;
+    background-color:#ffffff;
+    border: 1px solid #CCCCCC;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    font-size:20px;
+}
+
+.guess button{
+    width:15%;
+    height:100%;
+    background-color:#E1ECF4;
+    border: 1px solid #7AA7C7;
+    border-radius: 3px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color:#3C76A1;
+}

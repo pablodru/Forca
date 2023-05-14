@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 export default function Jogo(props){
 
-    const {playGame, stateGame, setStateGame, chosenWord, misteryArray, counter, winCounter} = props;
+    const {playGame, stateGame, setStateGame, chosenWord, misteryArray, counter, winCounter, guessRight} = props;
 
     let image;
     let answer = "playing-word";
@@ -53,13 +53,13 @@ export default function Jogo(props){
         <div className="play">
             <img src={image} data-test='game-image' />
             <div>
-                <button className="choose-word" onClick={canPlay} disabled={stateGame && counter===6} data-test='choose-word'>
+                <button className="choose-word" onClick={playGame} data-test='choose-word'>
                     <p>Escolher Palavra</p>
                 </button>
-                <div className={answer}> {/*Outras classes: playing-word wrong-word e right-word */}
-                    <span className={(counter!==6 && counterWin!==misteryArray.length) ? '' : 'hidden'} data-test='word'>{misteryArray.map( (mistery, i) => <p key={i}>{mistery}</p> )}</span>
+                <div className={answer}>
+                    <span className={((counter!==6 && counterWin!==misteryArray.length) && !guessRight ) ? '' : 'hidden'} data-test='word'>{misteryArray.map( (mistery, i) => <p key={i}>{mistery}</p> )}</span>
                     <span className={counter!==6 ? 'hidden' : ''} data-test='word'><p>{chosenWord}</p></span>
-                    <span className={(counterWin === misteryArray.length && counterWin!==0 && gameWin) ? 'right-word' : 'hidden'} data-test='word'><p>{chosenWord}</p></span>
+                    <span className={((counterWin === misteryArray.length && counterWin!==0 && gameWin) || guessRight) ? 'right-word' : 'hidden'} data-test='word'><p>{chosenWord}</p></span>
                 </div>
             </div>
         </div>
