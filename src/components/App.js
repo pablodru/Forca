@@ -23,7 +23,7 @@ export default function App(){
         <div className="app">
             <Jogo guessRight={guessRight} stateGame={stateGame} setStateGame={setStateGame} winCounter={winCounter} counter={counter} playGame={playGame} misteryArray={misteryArray} chosenWord={chosenWord} />
             <Letras setWinCounter={setWinCounter} winCounter={winCounter} counter={counter} setCounter={setCounter} stateGame={stateGame} selectedLeters={selectedLeters} setSelectedLeters={setSelectedLeters} misteryArray={misteryArray} setMisteryArray={setMisteryArray} arrayWord={arrayWord} setArrayWord={setArrayWord}/>
-            <Chute stateGame={stateGame} setCounter={setCounter} playGame={playGame} setGuessRight={setGuessRight} chosenWord={chosenWord} guess={guess} setGuess={setGuess} setWinCounter={setWinCounter} setStateGame={setStateGame} misteryArray={misteryArray} />
+            <Chute stateGame={stateGame} setCounter={setCounter} setGuessRight={setGuessRight} chosenWord={chosenWord} guess={guess} setGuess={setGuess} setWinCounter={setWinCounter} setStateGame={setStateGame} misteryArray={misteryArray} />
         </div>
     )
 

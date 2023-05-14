@@ -1,6 +1,6 @@
 export default function Chute(props) {
 
-    const {guess, setGuess, chosenWord, setWinCounter, setStateGame, misteryArray, setGuessRight, playGame, setCounter, stateGame} = props;
+    const {guess, setGuess, chosenWord, setWinCounter, setStateGame, misteryArray, setGuessRight, setCounter, stateGame} = props;
 
     function guessWord(){
         setStateGame(false);
